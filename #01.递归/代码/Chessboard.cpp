@@ -6,9 +6,9 @@
 int nCount = 0;
 int Matrix[100][100];
 
-//tr,tc(top_row,top_col)：代表棋盘左上角坐标
-//sr,sc(special_row, special_col)：代表特殊点坐标
-//size:棋盘的大小
+// tr,tc(top_row,top_col)：代表棋盘左上角坐标
+// sr,sc(special_row, special_col)：代表特殊点坐标
+// size: 棋盘的大小
 void chessBoard(int tr, int tc, int sr, int sc, int size)
 {
     if (size == 1) return;
