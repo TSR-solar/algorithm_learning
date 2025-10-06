@@ -39,7 +39,7 @@ int bound(int i, int tv)
     int max = tv;
     for(int j = i+1; j < n; j++)
     {
-        max += w[j];
+        max += v[j];
     }
     return max > V;
 }
@@ -47,7 +47,7 @@ int bound(int i, int tv)
 void dfs(int i, int tw, int tv, int *t)
 {
     // 结束递归条件
-    if(i > n)
+    if(i >= n)
     {
         V = tv;
         for(int j = 0; j < n; j++)
@@ -62,12 +62,13 @@ void dfs(int i, int tw, int tv, int *t)
     {
         t[i] = 1;
         dfs(i+1, tw+w[i], tv+v[i], t);
+        t[i] = 0; // 回溯，重置选择
     } 
 
     // 是否向右深入
     if(bound(i, tv))
     {
-        dfs(i, tw, tv+v[i], t);
+        dfs(i+1, tw, tv, t);
     }
 }
 
@@ -75,6 +76,6 @@ int main()
 {
     input();
     int t[N] = {0};
-    dfs(1, 0, 0, t);
+    dfs(0, 0, 0, t);
     output();
 }
